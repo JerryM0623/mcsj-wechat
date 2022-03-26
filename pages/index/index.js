@@ -8,7 +8,10 @@ Page({
      * 页面的初始数据
      */
     data: {
-        swiperList:[],
+        // 轮播图列表
+        swiperList: [],
+        // 精彩推荐列表
+        recommendList: []
     },
 
     /**
@@ -17,6 +20,8 @@ Page({
     onLoad: function (options) {
         // 获取 swiperList 并且更新到 data 中
         this.getSwiperList();
+        // 获取 recommendList 并且更新到 data 中
+        this.getRecommendList();
     },
 
     /**
@@ -80,6 +85,21 @@ Page({
             fail: () => {
                 showToastFail('数据获取失败');
             }
+        })
+    },
+
+    // 加载精选推荐的方法(mock阶段)
+    getRecommendList: function(){
+        wx.request({
+          url: indexApis.getRecommendList,
+          success: (response) => {
+              this.setData({
+                  recommendList: response.data.data
+              })
+          },
+          fail: () => {
+            showToastFail('数据获取失败');
+          }
         })
     }
 })

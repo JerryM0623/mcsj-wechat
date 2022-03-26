@@ -91,7 +91,7 @@
 .recommend-box .recommend-list .recommend-list-item{
     background-color: #ffffff;
     width: calc((100% - 20rpx) / 2);
-    height: 500rpx;
+    height: 450rpx;
     border-radius: 20rpx;
     overflow: hidden;
     margin-bottom: 20rpx;
@@ -100,7 +100,7 @@
 }
 .recommend-box .recommend-list .recommend-list-item .list-item-image{
     width: 100%;
-    height: 350rpx;
+    height: 300rpx;
 }
 .recommend-box .recommend-list .recommend-list-item .list-item-name,
 .recommend-box .recommend-list .recommend-list-item .list-item-price{

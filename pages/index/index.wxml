@@ -32,20 +32,10 @@
     <view class="recommend-box">
         <view class="recommend-title">精彩推荐</view>
         <view class="recommend-list">
-            <view class="recommend-list-item">
-                <image class="list-item-image" src="/static/images/develop_test/test3.jpg"></image>
-                <view class="list-item-name">不二家棒棒糖</view>
-                <view class="list-item-price">￥19</view>
-            </view>
-            <view class="recommend-list-item">
-                <image class="list-item-image" src="/static/images/develop_test/test3.jpg"></image>
-                <view class="list-item-name">不二家棒棒糖</view>
-                <view class="list-item-price">￥19</view>
-            </view>
-            <view class="recommend-list-item">
-                <image class="list-item-image" src="/static/images/develop_test/test3.jpg"></image>
-                <view class="list-item-name">不二家棒棒糖</view>
-                <view class="list-item-price">￥19</view>
+            <view wx:for="{{recommendList}}" wx:key="id" class="recommend-list-item">
+                <image class="list-item-image" src="{{item.img_url}}"></image>
+                <view class="list-item-name">{{item.name}}</view>
+                <view class="list-item-price">￥{{item.price}}</view>
             </view>
         </view>
     </view>
