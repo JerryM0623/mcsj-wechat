@@ -21,7 +21,7 @@ Page({
         // 获取 swiperList 并且更新到 data 中
         this.getSwiperList();
         // 获取 recommendList 并且更新到 data 中
-        this.getRecommendList();
+        // this.getRecommendList();
     },
 
     /**
@@ -76,14 +76,14 @@ Page({
     // 获取 swiperList 方法
     getSwiperList: function(){
         wx.request({
-            url: indexApis.getSwiperList,
+            url: indexApis.getSwiperListDev,
             success: (response) => {
                 this.setData({
                     swiperList: response.data.data
                 })
             },
             fail: () => {
-                showToastFail('数据获取失败');
+                console.log(111);
             }
         })
     },
@@ -91,15 +91,21 @@ Page({
     // 加载精选推荐的方法(mock阶段)
     getRecommendList: function(){
         wx.request({
-          url: indexApis.getRecommendList,
-          success: (response) => {
-              this.setData({
-                  recommendList: response.data.data
-              })
-          },
-          fail: () => {
-            showToastFail('数据获取失败');
-          }
+            url: indexApis.getRecommendList,
+            success: (response) => {
+                let recommendList = response.data.data;
+                if(recommendList.length > 0){
+                    this.setData({
+                        recommendList
+                    })
+                }else{
+                    showToastFail('当前暂无轮播图');
+                }
+                
+            },
+            fail: () => {
+                showToastFail('数据获取失败');
+            }
         })
     }
 })
