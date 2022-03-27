@@ -1,8 +1,11 @@
-const { mockBaseUrl } = require('../config/request.config');
+const { mockBaseUrl, developBaseUrl } = require('../config/request.config');
 
 const indexApis = {
-    getSwiperList: mockBaseUrl + '/index/carousel',
-    getRecommendList: mockBaseUrl + '/index/recommend'
+    getSwiperListMock: mockBaseUrl + '/index/carousel',
+    getSwiperListDev: developBaseUrl + '/index/swiperList',
+
+    getRecommendListMock: mockBaseUrl + '/index/recommend',
+    getRecommendListDev: developBaseUrl + '/index/recommendList'
 }
 
 module.exports = indexApis;

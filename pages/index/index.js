@@ -11,7 +11,13 @@ Page({
         // 轮播图列表
         swiperList: [],
         // 精彩推荐列表
-        recommendList: []
+        recommendList: [],
+        // 页数
+        pageNum: 1,
+        // 每次查询的数量
+        pageSize: 6,
+        // 是否已获取全部的精彩推荐数据
+        isAll: false
     },
 
     /**
@@ -63,7 +69,14 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        // 当没有加载所有数据的时候，请求后台
+        if(!this.isAll){
+            // 获取新的数据
+            this.setData({
+                pageNum: this.data.pageNum + 1
+            })
+            this.getRecommendList();
+        }
     },
 
     /**
@@ -76,14 +89,14 @@ Page({
     // 获取 swiperList 方法
     getSwiperList: function(){
         wx.request({
-            url: indexApis.getSwiperList,
+            url: indexApis.getSwiperListDev,
             success: (response) => {
                 this.setData({
                     swiperList: response.data.data
                 })
             },
             fail: () => {
-                showToastFail('数据获取失败');
+                console.log(111);
             }
         })
     },
@@ -91,14 +104,23 @@ Page({
     // 加载精选推荐的方法(mock阶段)
     getRecommendList: function(){
         wx.request({
-          url: indexApis.getRecommendList,
+          url: indexApis.getRecommendListDev,
+          data: {
+              pageSize: this.data.pageSize,
+              pageNum: this.data.pageNum
+          },
           success: (response) => {
-              this.setData({
-                  recommendList: response.data.data
-              })
+                this.setData({
+                    recommendList: [...this.data.recommendList, ...response.data.data]
+                })
+                if(response.data.data.length === 0){
+                    this.setData({
+                        isAll: true
+                    })
+                }
           },
           fail: () => {
-            showToastFail('数据获取失败');
+              console.log('error');
           }
         })
     }

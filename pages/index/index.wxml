@@ -6,8 +6,8 @@
     <!-- 轮播图 -->
     <view class="carousel-box">
         <swiper class="carousel" indicator-dots="true" indicator-color="#b2b2b2" 	indicator-active-color="#ffffff" autoplay="true" duration="300" interval="3000" loop>
-            <swiper-item class="carousel-item" wx:for="{{swiperList}}" wx:key="id">
-                <image src="{{item.img_url}}"></image>
+            <swiper-item class="carousel-item" wx:for="{{swiperList}}" wx:key="uuid">
+                <image src="{{item.url}}"></image>
             </swiper-item>
         </swiper>
     </view>
@@ -32,11 +32,14 @@
     <view class="recommend-box">
         <view class="recommend-title">精彩推荐</view>
         <view class="recommend-list">
-            <view wx:for="{{recommendList}}" wx:key="id" class="recommend-list-item">
-                <image class="list-item-image" src="{{item.img_url}}"></image>
+            <view wx:for="{{recommendList}}" wx:key="uuid" class="recommend-list-item">
+                <image class="list-item-image" src="{{item.url}}"></image>
                 <view class="list-item-name">{{item.name}}</view>
                 <view class="list-item-price">￥{{item.price}}</view>
             </view>
         </view>
     </view>
+
+    <!-- 小tip -->
+    <view class="finish-tip" wx:if="{{isAll}}">已经到底啦</view>
 </view>
