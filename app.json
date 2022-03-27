@@ -2,19 +2,20 @@
     "pages": [
         "pages/index/index",
         "pages/profile/profile",
-        "pages/category/category"
+        "pages/category/category",
+        "pages/login/login"
     ],
     "window": {
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText":"门窗视界",
-        "navigationBarTextStyle":"black"
+        "navigationBarTitleText": "门窗视界",
+        "navigationBarTextStyle": "black"
     },
     "tabBar": {
         "color": "#707070",
         "selectedColor": "#cb141d",
         "backgroundColor": "#ffffff",
         "borderStyle": "black",
-        "list":[
+        "list": [
             {
                 "pagePath": "pages/index/index",
                 "text": "首页",

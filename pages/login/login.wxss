@@ -1,0 +1,65 @@
+page,
+.login-container{
+    height: 100%;
+}
+
+.title{
+    height: 250rpx;
+    line-height: 250rpx;
+    text-align: center;
+    font-size: 40rpx;
+    font-weight: 700;
+    color: #000000;
+}
+
+.input-box{
+    width: calc(100% - 60rpx);
+}
+.input-box .phone-number-box,
+.input-box .verification-code-box{
+    height: 100rpx;
+    display: flex;
+    align-items: center;margin-bottom: 20rpx;
+}
+.phone-number,
+.verification-code{
+    width: 100%;
+    height: 70rpx;
+    font-size: 32rpx;
+    color: #000000;
+    line-height: 100rpx;
+    border-bottom: 2rpx solid #e6e6e6;
+}
+
+.input-box .verification-code-box{
+    justify-content: space-between;
+}
+.verification-code-box .verification-code{
+    width: 60%;
+}
+.verification-code-box .get-verification-code{
+    width: 30%;
+    padding: 0;
+    margin: 0;
+    height: 70rpx;
+    line-height: 70rpx;
+    background-color: #cb141d;
+    color: #ffffff;
+}
+.verification-code-box .get-verification-code:active{
+    background-color: #a0272d;
+}
+
+.login-btn{
+    padding: 0;
+    margin: 0;
+    height: 80rpx;
+    line-height: 80rpx;
+    background-color: #cb141d;
+    color: white;
+    border-radius: 50rpx;
+    margin-top: 20rpx;
+}
+.login-btn:active{
+    background-color: #a0272d;
+}
