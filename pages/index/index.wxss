@@ -124,3 +124,10 @@
     position: absolute;
     bottom: 20rpx;
 }
+
+.finish-tip{
+    font-size: 24rpx;
+    text-align: center;
+    color: #707070;
+    margin-bottom: 20rpx;
+}

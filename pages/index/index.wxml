@@ -39,4 +39,7 @@
             </view>
         </view>
     </view>
+
+    <!-- 小tip -->
+    <view class="finish-tip" wx:if="{{isAll}}">已经到底啦</view>
 </view>
