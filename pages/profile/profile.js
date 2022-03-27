@@ -5,7 +5,11 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        // 用户信息对象
+        userinfo: {
+            avatar: '3432',
+            username: '123'
+        }
     },
 
     /**

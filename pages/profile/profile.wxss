@@ -1,1 +1,82 @@
-/* pages/profile/profile.wxss */
+page{
+    height: 100%;
+}
+.profile-container{
+    height: 100%;
+    background-color: #eeeeee;
+}
+
+/* 头部区域 */
+.account-box{
+    width: 100%;
+    height: 350rpx;
+    background-color: #cb141d;
+    display: flex;
+    margin-bottom: 30rpx;
+}
+
+/* 头像 */
+.avatar{
+    width: 150rpx;
+    height: 150rpx;
+    margin-left: 30rpx;
+    margin-top: 150rpx;
+}
+.avatar image{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+/* 账户信息 */
+.text{
+    height: 150rpx;
+    margin-top: 150rpx;
+    margin-left: 30rpx;
+    color: white;
+}
+.text view{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.username{
+    font-size: 50rpx;
+    font-weight: 700;
+}
+.tip{
+    font-size: 32rpx;
+}
+
+/* 菜单列表样式 */
+.menu-list{
+    width: 100%;
+    background-color: #ffffff;
+}
+.menu-list .list-item{
+    width: 90%;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 32rpx;
+    border-bottom: 2rpx solid #e6e6e6;
+    margin: 0 auto;
+    display: flex;
+}
+.menu-list .list-item:nth-last-child(1){
+    border: none;
+}
+.menu-list .list-item .iconfont{
+    vertical-align: middle;
+}
+.menu-list .list-item .iconfont:nth-child(1){
+    width: 50rpx;
+}
+.menu-list .list-item .list-name{
+    width: 200rpx;
+}
+.menu-list .list-item .iconfont:nth-last-child(1){
+    width: 50rpx;
+    text-align: right;
+    margin-left: calc(100% - 300rpx);
+}
