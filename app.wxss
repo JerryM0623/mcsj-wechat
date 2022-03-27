@@ -1,3 +1,4 @@
+@import '/resource/font/iconfont.wxss';
 /* 将每个最外层全部设计为 flex 布局 */
 .container{
   display: flex;
