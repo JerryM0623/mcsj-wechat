@@ -89,7 +89,7 @@ Page({
     // 获取 swiperList 方法
     getSwiperList: function(){
         wx.request({
-            url: indexApis.getSwiperListDev,
+            url: indexApis.getSwiperList,
             success: (response) => {
                 this.setData({
                     swiperList: response.data.data
@@ -104,7 +104,7 @@ Page({
     // 加载精选推荐的方法(mock阶段)
     getRecommendList: function(){
         wx.request({
-          url: indexApis.getRecommendListDev,
+          url: indexApis.getRecommendList,
           data: {
               pageSize: this.data.pageSize,
               pageNum: this.data.pageNum
