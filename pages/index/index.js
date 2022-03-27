@@ -113,6 +113,11 @@ Page({
                 this.setData({
                     recommendList: [...this.data.recommendList, ...response.data.data]
                 })
+                if(response.data.data.length === 0){
+                    this.setData({
+                        isAll: true
+                    })
+                }
           },
           fail: () => {
               console.log('error');
