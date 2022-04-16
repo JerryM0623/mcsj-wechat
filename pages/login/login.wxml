@@ -3,7 +3,7 @@
         <!-- title -->
         <view class="title">账户登录</view>
         <!-- account input -->
-        <input type="number" placeholder="账号" class="account"/>
+        <input type="text" placeholder="用户名" maxlength="7" class="account"/>
         <!-- password input -->
         <input type="text" password="true" placeholder="密码" class="password"/>
         <!-- goto the register page -->
