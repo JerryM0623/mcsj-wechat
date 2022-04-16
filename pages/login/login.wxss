@@ -1,0 +1,48 @@
+.login-container{
+    height: 100%;
+    position: relative;
+}
+
+.wrapper{
+    position: absolute;
+    width: 100%;
+    top: 200rpx;
+}
+
+.title{
+    text-align: center;
+    font-weight: 700;
+    font-size: 40rpx;
+}
+.account, .password{
+    width: 70%;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 10rpx;
+    border-bottom: 1px solid #e7e7e7;
+    margin: 0 auto;
+}
+
+.tip{
+    width: 70%;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 24rpx;
+    text-align: right;
+    margin: 0 auto;
+}
+
+.login{
+    width: 70% !important;
+    height: 80rpx;
+    background-color: #cb141d;
+    color: white;
+    padding: 0;
+    margin: 0;
+    line-height: 80rpx;
+    margin-top: 20rpx;
+}
+
+.login:active{
+    background-color: #b61119;
+}
