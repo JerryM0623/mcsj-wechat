@@ -2,8 +2,7 @@
     "pages": [
         "pages/index/index",
         "pages/profile/profile",
-        "pages/category/category",
-        "pages/login/login"
+        "pages/category/category"
     ],
     "window": {
         "navigationBarBackgroundColor": "#fff",
