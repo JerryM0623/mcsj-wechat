@@ -1,6 +1,7 @@
 const indexApis = require('../../apis/index.api');
 const { showToastFail } = require('../../utils/showToast');
 
+
 // pages/index/index.js
 Page({
 
