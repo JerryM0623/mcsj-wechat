@@ -39,5 +39,5 @@
 }
 
 .register:active{
-    background-color: #b31921;
+    background-color: #b61119;
 }
