@@ -1,5 +1,4 @@
 {
-    "setting": {},
     "condition": {
         "plugin": {
             "list": []
@@ -12,13 +11,6 @@
         },
         "miniprogram": {
             "list": [
-                {
-                    "name": "我的",
-                    "pathName": "pages/profile/profile",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
                 {
                     "name": "login",
                     "pathName": "pages/login/login",

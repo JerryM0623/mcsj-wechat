@@ -1,0 +1,27 @@
+<view class="container register-container">
+    <view class="wrapper">
+        <!-- title -->
+        <view class="title">账号注册</view>
+
+
+        
+        <!-- account -->
+        <!-- <input type="number" class="account" placeholder="账号" maxlength="10"/> -->
+
+
+
+        <!-- username -->
+        <input type="text" class="username" placeholder="用户名" model:value="{{ username }}" maxlength="7"/>
+
+
+        <!-- password -->
+        <input type="text" class="password" password="true" model:value="{{ password }}" placeholder="密码"/>
+
+
+        <!-- password check -->
+        <input type="text" class="password-check" model:value="{{ passwordCheck }}" password="true" placeholder="确认密码"/>
+
+        <!-- register button -->
+        <button class="register" bindtap="registerAndLogin">注册并登录</button>
+    </view>
+</view>
