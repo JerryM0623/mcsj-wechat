@@ -1,5 +1,7 @@
 const MD5 = require('../../libs/crypto-js/md5');
 const registerApis = require('../../apis/register.api');
+const loginApis = require('../../apis/login.api');
+const app = getApp();
 
 
 Page({
@@ -72,7 +74,8 @@ Page({
     /**
      * 点击注册并且登录
      */
-    registerAndLogin(){
+    async registerAndLogin(){
+
         // 判断输入情况
         if(this.checkInput() === 'error1'){
             wx.showToast({
@@ -119,33 +122,10 @@ Page({
             return;
         }
 
-        // 校验通过
-
         const hashPassword = MD5(this.data.password).toString();
 
         // 后台交互
-        wx.request({
-          url: registerApis.register,
-          data: {
-              username: this.data.username,
-              hashPassword: hashPassword
-          },
-          method: 'POST',
-          success(data){
-            const { code, msg } = data.data;
-            console.log(code);
-            wx.showToast({
-              title: msg,
-              icon: code === 10004 || code === 10005 ? 'error' : 'success',
-              success(){
-                  // TODO: 实现登录
-              }
-            })
-          },
-          fail(error){
-              console.log(error);
-          }
-        })
+        this.register(hashPassword);
     },
 
     /**
@@ -168,5 +148,90 @@ Page({
         }
 
         return 'pass';
+    },
+
+    /**
+     * 登录函数
+     * @param hashPassword md5加密之后的密码字符串
+     */
+    login(hashPassword){
+        wx.request({
+            url: loginApis.login,
+            data: {
+                username: this.data.username,
+                hashPassword: hashPassword
+            },
+            method: 'POST',
+            success(res){
+                // 请求返回
+                const { code, msg, data } = res.data;
+                if(code !== 10009){
+                    wx.showToast({
+                      title: msg,
+                      icon: 'none'
+                    })
+                    return;
+                }
+                // 建立缓存
+                app.globalData.userinfo = data;
+                wx.setStorage({
+                    key: 'userinfo',
+                    data: app.globalData.userinfo,
+                    success(){
+                        // 缓存建立成功，跳转用户信息页面，提示用户
+                        wx.showToast({
+                          title: '登录成功',
+                          icon: 'none',
+                          success(){
+                            wx.switchTab({
+                                url: '/pages/profile/profile',
+                              })
+                          }
+                        })
+                    }
+                }) 
+
+            },
+            fail(){
+                wx.showToast({
+                    title: '登陆失败，请重试！',
+                    icon: 'none'
+                })
+            }
+          })
+    },
+
+    /**
+     * 注册函数
+     * @param {string} hashPassword md5加密之后的密码字符串 
+     */
+    register(hashPassword){
+        const self = this;
+        wx.request({
+            url: registerApis.register,
+            data: {
+                username: this.data.username,
+                hashPassword: hashPassword
+            },
+            method: 'POST',
+            success(data){
+                const { code, msg } = data.data;
+                if(code !== 10006){
+                    wx.showToast({
+                        title: msg,
+                        icon: 'none'
+                    })
+                    return;
+                }
+                
+                self.login(hashPassword);
+            },
+            fail(){
+                wx.showToast({
+                  title: '登陆失败，请重试！',
+                  icon: 'none'
+                })
+            }
+        })
     }
 })

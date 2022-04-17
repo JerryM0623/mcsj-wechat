@@ -1,2 +1,10 @@
 // app.js
-App({})
+App({
+    globalData:{
+        userinfo: {
+            username: '',
+            uuid: '',
+            token: ''
+        }
+    }
+})
