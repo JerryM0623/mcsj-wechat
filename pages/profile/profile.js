@@ -17,31 +17,20 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function () {
-      console.log(app.globalData.userinfo);
-      const {username, uuid} = app.globalData.userinfo;
-      if (username !== '' && username !== undefined){
-        // 已经获取了登录信息
-        this.setData({
-          userinfo: {
-            username: username,
-            userId: uuid.substring(0, 8) + uuid.substring(9, 13)
-          }
-        })
-      }
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-      
+      this.autoLogin();
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+      this.autoLogin();
     },
 
     /**
@@ -80,10 +69,29 @@ Page({
     },
 
     /**
+     * 页面初次加载及隐藏后再次显示的自动登录函数
+     */
+    autoLogin(){
+      const {username, uuid} = app.globalData.userinfo;
+      if (username !== '' && username !== undefined){
+        // 已经获取了登录信息
+        this.setData({
+          userinfo: {
+            username: username,
+            userId: uuid.substring(0, 8) + uuid.substring(9, 13)
+          }
+        })
+      }
+    },
+
+    /**
      * 前往登陆页面
      */
     gotoLogin(){
-      wx.redirectTo({
+      if(this.username !== ''){
+        return;
+      }
+      wx.navigateTo({
         url: '/pages/login/login',
       })
     },
