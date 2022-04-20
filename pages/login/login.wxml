@@ -1,0 +1,14 @@
+ <view class="container login-container">
+    <view class="wrapper">
+        <!-- title -->
+        <view class="title">账户登录</view>
+        <!-- account input -->
+        <input type="text" model:value="{{username}}" placeholder="用户名" maxlength="7" class="account"/>
+        <!-- password input -->
+        <input type="text" model:value="{{password}}" password="true" placeholder="密码" class="password"/>
+        <!-- goto the register page -->
+        <view class="tip" bindtap="gotoRegister">暂无账号？</view>
+        <!-- login button -->
+        <button class="login" bindtap="login">登录</button>
+    </view>
+ </view>
