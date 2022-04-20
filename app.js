@@ -6,5 +6,15 @@ App({
             uuid: '',
             token: ''
         }
+    },
+    onLaunch(){
+      const userinfo = wx.getStorageSync('userinfo');
+      if(userinfo !== null || userinfo !== ''){
+          this.globalData.userinfo = {
+            username: userinfo.username,
+            uuid: userinfo.uuid,
+            token: userinfo.token
+          }
+      }
     }
 })

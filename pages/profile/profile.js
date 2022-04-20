@@ -17,6 +17,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function () {
+      console.log(app.globalData.userinfo);
       const {username, uuid} = app.globalData.userinfo;
       if (username !== ''){
         // 已经获取了登录信息
@@ -84,6 +85,22 @@ Page({
     gotoLogin(){
       wx.redirectTo({
         url: '/pages/login/login',
+      })
+    },
+
+    gotoLocations(){
+      // 判断
+      if(this.data.userinfo.username === ''){
+        wx.showToast({
+          title: '请先登录',
+          icon: 'none'
+        })
+        return;
+      }
+
+      // 跳转
+      wx.navigateTo({
+        url: '/pages/locations/locations?id=' + app.globalData.userinfo.id,
       })
     }
 })

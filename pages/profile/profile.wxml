@@ -27,7 +27,7 @@
             <view class="list-name">我的退换货</view>
             <view class="iconfont icon-xiayiye"></view>
         </view>
-        <view class="list-item">
+        <view class="list-item" bindtap="gotoLocations">
             <view class="iconfont icon-dingwei"></view>
             <view class="list-name">我的地址</view>
             <view class="iconfont icon-xiayiye"></view>
