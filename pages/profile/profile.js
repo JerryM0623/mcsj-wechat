@@ -100,7 +100,7 @@ Page({
 
       // 跳转
       wx.navigateTo({
-        url: '/pages/locations/locations?id=' + app.globalData.userinfo.id,
+        url: `/pages/locations/locations?id=${ app.globalData.userinfo.id }`,
       })
     }
 })
