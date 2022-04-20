@@ -9,7 +9,7 @@ App({
     },
     onLaunch(){
       const userinfo = wx.getStorageSync('userinfo');
-      if(userinfo !== null || userinfo !== ''){
+      if(userinfo !== null ||userinfo !== undefined || userinfo !== ''){
           this.globalData.userinfo = {
             username: userinfo.username,
             uuid: userinfo.uuid,

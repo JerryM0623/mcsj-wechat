@@ -19,7 +19,7 @@ Page({
     onLoad: function () {
       console.log(app.globalData.userinfo);
       const {username, uuid} = app.globalData.userinfo;
-      if (username !== ''){
+      if (username !== '' && username !== undefined){
         // 已经获取了登录信息
         this.setData({
           userinfo: {
