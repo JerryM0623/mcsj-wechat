@@ -88,12 +88,15 @@ Page({
      * 前往登陆页面
      */
     gotoLogin(){
-      if(this.username !== ''){
+      const list = [undefined, null, ''];
+      console.log(list.indexOf(this.username));
+      if(list.indexOf(this.username) !== -1){
+        wx.navigateTo({
+          url: '/pages/login/login',
+        })
+      }else{
         return;
       }
-      wx.navigateTo({
-        url: '/pages/login/login',
-      })
     },
 
     gotoLocations(){
