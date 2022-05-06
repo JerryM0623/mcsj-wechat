@@ -72,31 +72,31 @@ Page({
     /**
      * 跳转页面到注册
      */
-    gotoRegister(){
+    gotoRegister() {
         wx.navigateTo({
-          url: '/pages/register/register',
+            url: '/pages/register/register',
         })
     },
 
     /**
      * 登录函数
      */
-    login(){
-        const { username, password } = this.data;
+    login() {
+        const {username, password} = this.data;
 
         // 验证
-        if(username.trim().length < 5){
+        if (username.trim().length < 5) {
             wx.showToast({
-              title: '用户名长度在5-7之间',
-              icon: 'none'
+                title: '用户名长度在5-7之间',
+                icon: 'none'
             })
             return;
         }
 
-        if(password.trim().length < 6){
+        if (password.trim().length < 6) {
             wx.showToast({
-              title: '密码长度至少为6位',
-              icon: 'none'
+                title: '密码长度至少为6位',
+                icon: 'none'
             })
             return;
         }
@@ -106,47 +106,49 @@ Page({
 
         // 发送请求
         wx.request({
-          url: loginApis.login,
-          data:{
-              username: username,
-              hashPassword: hashPassword
-          },
-          method: "POST",
-          success(res){
-              // 请求返回
-              const { code, msg, data } = res.data;
-              if(code !== 10009){
-                  wx.showToast({
-                    title: msg,
+            url: loginApis.login,
+            data: {
+                username: username,
+                hashPassword: hashPassword
+            },
+            method: "POST",
+            success(res) {
+                // 请求返回
+                const {code, msg, data} = res.data;
+                if (code !== 10009) {
+                    wx.showToast({
+                        title: msg,
+                        icon: 'none'
+                    })
+                    return;
+                }
+                // 建立缓存
+                app.globalData.userinfo = data;
+                wx.setStorage({
+                    key: 'userinfo',
+                    data: app.globalData.userinfo,
+                    success() {
+                        // 缓存建立成功，跳转用户信息页面，提示用户
+                        wx.showToast({
+                            title: '登录成功',
+                            icon: 'none',
+                            success() {
+                                setTimeout(() => {
+                                    wx.switchTab({
+                                        url: '/pages/profile/profile',
+                                    })
+                                }, 1000)
+                            }
+                        })
+                    }
+                })
+            },
+            fail() {
+                wx.showToast({
+                    title: '登录失败，请稍后重试',
                     icon: 'none'
-                  })
-                  return;
-              }
-              // 建立缓存
-              app.globalData.userinfo = data;
-              wx.setStorage({
-                  key: 'userinfo',
-                  data: app.globalData.userinfo,
-                  success(){
-                      // 缓存建立成功，跳转用户信息页面，提示用户
-                      wx.showToast({
-                        title: '登录成功',
-                        icon: 'none',
-                        success(){
-                          wx.switchTab({
-                              url: '/pages/profile/profile',
-                            })
-                        }
-                      })
-                  }
-              }) 
-          },
-          fail(){
-              wx.showToast({
-                title: '登录失败，请稍后重试',
-                icon: 'none'
-              })
-          }
+                })
+            }
         })
     }
 })

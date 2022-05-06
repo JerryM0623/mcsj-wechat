@@ -1,6 +1,6 @@
 <view class="profile-container container">
     <!-- 账户信息区域 -->
-    <view class="account-box" bindtap="gotoLogin">
+    <view wx:if="{{!userinfo.username}}" class="account-box" bindtap="gotoLogin">
         <view class="avatar">
             <image src="/static/images/login/no_login.png" class="no-login-image"></image>
         </view>
@@ -9,7 +9,14 @@
                 <text class="username">未登录</text>
                 <text class="tip">点击账号登陆</text>
             </view>
-            <view wx:else="{{userinfo.username}}" class="login-text">
+        </view>
+    </view>
+    <view wx:else="{{userinfo.username}}" class="account-box">
+        <view class="avatar">
+            <image src="/static/images/login/no_login.png" class="no-login-image"></image>
+        </view>
+        <view class="text">
+            <view class="login-text">
                 <text class="username">{{ userinfo.username }}</text>
                 <text class="tip">id：{{ userinfo.userId }}</text>
             </view>
