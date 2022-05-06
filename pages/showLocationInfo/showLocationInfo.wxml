@@ -16,7 +16,7 @@
     </view>
     <!-- 添加按钮 -->
     <view class="bottom-control-btn-box">
-        <button wx:if="{{ type === '1' }}" bind:tap="{{ addLocationInfo }}" class="single-btn">保存新地址</button>
-        <button wx:if="{{ type === '2' }}" bind:tap="{{ saveLocationEdit }}" class="single-btn">保存修改</button>
+        <button wx:if="{{ type === '1' }}" bind:tap="addLocationInfo" class="single-btn">保存新地址</button>
+        <button wx:if="{{ type === '2' }}" bind:tap="saveLocationEdit" class="single-btn">保存修改</button>
     </view>
 </view>
