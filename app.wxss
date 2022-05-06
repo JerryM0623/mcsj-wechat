@@ -1,12 +1,35 @@
 @import '/resource/font/iconfont.wxss';
 /* 将每个最外层全部设计为 flex 布局 */
-page{
-  height: 100%;
-  width: 100%;
+page {
+    height: 100%;
+    width: 100%;
 }
 
-.container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 放置在页面最低端的按钮的边框 */
+.bottom-control-btn-box {
+    height: 130rpx;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 一个按钮的时候的样式 */
+.bottom-control-btn-box .single-btn {
+    width: 70%;
+    margin: 0 auto;
+    color: white;
+    background-color: #cb141d;
+    font-size: 32rpx;
+    border-radius: 40rpx;
 }

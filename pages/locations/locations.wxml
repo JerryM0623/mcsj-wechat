@@ -14,7 +14,7 @@
       </view>
     </view>
   </view>
-  <view class="control-btn">
-    <button class="add-location">添加地址</button>
+  <view class="bottom-control-btn-box">
+    <button bindtap="addLocation" class="single-btn">添加地址</button>
   </view>
 </view>
