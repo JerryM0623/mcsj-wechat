@@ -3,3 +3,27 @@
     width: 100%;
     background-color: rgb(214, 214, 214);
 }
+
+.show-location-info-container .input-container{
+    width: calc(100% - 80rpx);
+    background-color: white;
+    margin-top: 20rpx;
+    padding: 20rpx;
+    border-radius: 14rpx;
+}
+
+.input-container .input-box{
+    padding: 20rpx 0;
+    border-bottom: 2rpx solid #c7c7c7;
+    display: flex;
+    font-size: 30rpx;
+}
+.input-container .input-box:nth-last-child(1){
+    border: none;
+}
+.input-box text{
+    width: 160rpx;
+}
+.input-box input{
+    width: calc(100% - 100rpx);
+}
