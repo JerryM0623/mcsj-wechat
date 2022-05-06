@@ -74,14 +74,14 @@ Page({
     /**
      * 点击注册并且登录
      */
-    async registerAndLogin(){
+    async registerAndLogin() {
 
         // 判断输入情况
-        if(this.checkInput() === 'error1'){
+        if (this.checkInput() === 'error1') {
             wx.showToast({
-              title: '用户名长度为5-7之间',
-              icon: 'none',
-              
+                title: '用户名长度为5-7之间',
+                icon: 'none',
+
             })
 
             this.setData({
@@ -93,11 +93,11 @@ Page({
             return;
         }
 
-        if(this.checkInput() === 'error2'){
+        if (this.checkInput() === 'error2') {
             wx.showToast({
                 title: '密码长度必须是6位及其以上',
                 icon: 'none',
-                
+
             })
 
             this.setData({
@@ -108,11 +108,11 @@ Page({
             return;
         }
 
-        if(this.checkInput() === 'error3'){
+        if (this.checkInput() === 'error3') {
             wx.showToast({
                 title: '两次密码输入不一致',
                 icon: 'none',
-                
+
             })
 
             this.setData({
@@ -131,19 +131,19 @@ Page({
     /**
      * 检查输入数据是否有误
      */
-    checkInput(){
+    checkInput() {
 
-        const { username, password, passwordCheck } = this.data;
+        const {username, password, passwordCheck} = this.data;
 
-        if(username.trim().length < 5){
+        if (username.trim().length < 5) {
             return 'error1';
         }
 
-        if(password.trim().length < 6){
+        if (password.trim().length < 6) {
             return 'error2';
         }
 
-        if(passwordCheck !== password){
+        if (passwordCheck !== password) {
             return 'error3';
         }
 
@@ -154,7 +154,7 @@ Page({
      * 登录函数
      * @param hashPassword md5加密之后的密码字符串
      */
-    login(hashPassword){
+    login(hashPassword) {
         wx.request({
             url: loginApis.login,
             data: {
@@ -162,13 +162,13 @@ Page({
                 hashPassword: hashPassword
             },
             method: 'POST',
-            success(res){
+            success(res) {
                 // 请求返回
-                const { code, msg, data } = res.data;
-                if(code !== 10009){
+                const {code, msg, data} = res.data;
+                if (code !== 10009) {
                     wx.showToast({
-                      title: msg,
-                      icon: 'none'
+                        title: msg,
+                        icon: 'none'
                     })
                     return;
                 }
@@ -177,35 +177,37 @@ Page({
                 wx.setStorage({
                     key: 'userinfo',
                     data: app.globalData.userinfo,
-                    success(){
+                    success() {
                         // 缓存建立成功，跳转用户信息页面，提示用户
                         wx.showToast({
-                          title: '登录成功',
-                          icon: 'none',
-                          success(){
-                            wx.switchTab({
-                                url: '/pages/profile/profile',
-                              })
-                          }
+                            title: '登录成功',
+                            icon: 'none',
+                            success() {
+                                setTimeout(() => {
+                                    wx.switchTab({
+                                        url: '/pages/profile/profile',
+                                    })
+                                }, 1000)
+                            }
                         })
                     }
-                }) 
+                })
 
             },
-            fail(){
+            fail() {
                 wx.showToast({
                     title: '登陆失败，请重试！',
                     icon: 'none'
                 })
             }
-          })
+        })
     },
 
     /**
      * 注册函数
-     * @param {string} hashPassword md5加密之后的密码字符串 
+     * @param {string} hashPassword md5加密之后的密码字符串
      */
-    register(hashPassword){
+    register(hashPassword) {
         const self = this;
         wx.request({
             url: registerApis.register,
@@ -214,22 +216,22 @@ Page({
                 hashPassword: hashPassword
             },
             method: 'POST',
-            success(data){
-                const { code, msg } = data.data;
-                if(code !== 10006){
+            success(data) {
+                const {code, msg} = data.data;
+                if (code !== 10006) {
                     wx.showToast({
                         title: msg,
                         icon: 'none'
                     })
                     return;
                 }
-                
+
                 self.login(hashPassword);
             },
-            fail(){
+            fail() {
                 wx.showToast({
-                  title: '登陆失败，请重试！',
-                  icon: 'none'
+                    title: '登陆失败，请重试！',
+                    icon: 'none'
                 })
             }
         })
