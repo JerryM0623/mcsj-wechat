@@ -129,4 +129,42 @@ Page({
             url: '/pages/showLocationInfo/showLocationInfo?type=2&userId=' + this.data.id + '&itemId=' + itemId,
         })
     },
+    /**
+     * 删除某一条地址信息
+     */
+    deleteLocation(event){
+        const self = this;
+        wx.showModal({
+            title: '警告',
+            content: '你确定要删除这个地址信息？',
+            confirmColor: '#ff0000',
+            success (res) {
+                if (res.confirm) {
+                    // 发送请求
+                    wx.request({
+                        url: locationsApis.deleteLocationByLocationId,
+                        data: { itemId: event.target.dataset.itemId },
+                        method: 'POST',
+                        success: (res) => {
+                            const data = res.data;
+                            console.log(data);
+                            wx.showToast({
+                                title: data.msg,
+                                icon: 'none',
+                                success: () => {
+                                    self.getLocations();
+                                }
+                            })
+                        },
+                        fail: () => {
+                            wx.showToast({
+                                title: '删除失败，请重试',
+                                icon: 'none'
+                            })
+                        },
+                    })
+                }
+            }
+        })
+    }
 })
