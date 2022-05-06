@@ -11,7 +11,7 @@
         </view>
         <view class="input-box location">
             <text>详细地址</text>
-            <input model:value="{{ location }}" type="text" placeholder="需要具体到街道、小区、门牌号"></input>
+            <textarea model:value="{{ location }}" type="text" placeholder="需要具体到街道、小区、门牌号"></textarea>
         </view>
     </view>
     <!-- 添加按钮 -->

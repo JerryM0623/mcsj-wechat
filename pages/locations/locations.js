@@ -119,5 +119,14 @@ Page({
         wx.navigateTo({
             url: '/pages/showLocationInfo/showLocationInfo?type=1&userId=' + this.data.id,
         })
-    }
+    },
+    /**
+     * 前往修改界面
+     */
+    editLocation(event){
+        const itemId = event.target.dataset.itemId;
+        wx.navigateTo({
+            url: '/pages/showLocationInfo/showLocationInfo?type=2&userId=' + this.data.id + '&itemId=' + itemId,
+        })
+    },
 })

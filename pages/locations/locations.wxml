@@ -10,7 +10,7 @@
       </view>
       <view class="location-control">
         <text>删除</text>
-        <text>编辑</text>
+        <text data-item-id="{{ item.id }}" bind:tap="editLocation">编辑</text>
       </view>
     </view>
   </view>
