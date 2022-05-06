@@ -4,12 +4,20 @@ Page({
     /**
      * 页面的初始数据
      */
-    data: {},
+    data: {
+        name: '',
+        phone: '',
+        location: '',
+        type: '-1'
+    },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        this.setData({
+           type: options.type
+        });
         // 修改导航栏信息
         this.setNavigationBarTitle(options.type);
     },
@@ -76,5 +84,17 @@ Page({
         wx.setNavigationBarTitle({
             title: pageTitle
         });
+    },
+    /**
+     * 添加新的地址信息
+     */
+    addLocationInfo(){
+
+    },
+    /**
+     * 保存地址信息的修改内容
+     */
+    saveLocationEdit(){
+
     }
 })
