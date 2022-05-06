@@ -1,0 +1,8 @@
+<view class="container show-location-info-container">
+    <!-- 输入信息的区域 -->
+
+    <!-- 添加按钮 -->
+    <view class="bottom-control-btn-box">
+        <button class="single-btn">保存地址</button>
+    </view>
+</view>

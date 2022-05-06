@@ -110,5 +110,14 @@ Page({
 		this.setData({
 			editLocationsList: locationsList
 		})
+	},
+
+	/**
+	 * 前往添加页面
+	 */
+	addLocation(){
+		wx.navigateTo({
+		  url: '/pages/showLocationInfo/showLocationInfo?type=1',
+		})
 	}
 })
