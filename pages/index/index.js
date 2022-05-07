@@ -134,4 +134,13 @@ Page({
             url: '/pages/search/search',
         })
     },
+    /**
+     * 前往详情界面
+     */
+    gotoProducrInfo(event){
+        const uuid = event.currentTarget.dataset.uuid;
+        wx.navigateTo({
+            url: '/pages/showProductInfo/showProductInfo?uuid='+uuid
+        })
+    }
 })

@@ -32,7 +32,7 @@
     <view class="recommend-box">
         <view class="recommend-title">精彩推荐</view>
         <view class="recommend-list">
-            <view wx:for="{{recommendList}}" wx:key="uuid" class="recommend-list-item">
+            <view bind:tap="gotoProducrInfo" wx:for="{{recommendList}}" wx:key="uuid" data-uuid="{{ item.uuid }}" class="recommend-list-item">
                 <image class="list-item-image" src="{{item.url}}"></image>
                 <view class="list-item-name">{{item.name}}</view>
                 <view class="list-item-price">￥{{item.price}}</view>

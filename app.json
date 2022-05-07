@@ -7,7 +7,8 @@
     "pages/register/register",
     "pages/locations/locations",
     "pages/showLocationInfo/showLocationInfo",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/showProductInfo/showProductInfo"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
