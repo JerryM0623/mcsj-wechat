@@ -1,8 +1,8 @@
 <view class="container category-container">
-    <view wx:for="{{ seriesAndTypesList }}" wx:for-item="groupItem" class="group">
+    <view wx:for="{{ seriesAndTypesList }}" wx:key="index" wx:for-item="groupItem" class="group">
         <view class="title">{{ groupItem[0] }}</view>
         <view class="type-list">
-            <view wx:for="{{ groupItem[1] }}" wx:for-item="buttonItem" class="type-list-item" data-type-id="{{ buttonItem.id }}" data-series-id="{{ buttonItem.seriesId }}" data-type-name="{{ buttonItem.name }}">{{ buttonItem.name }}</view>
+            <view bind:tap="gotoShowCategoryList" wx:for="{{ groupItem[1] }}" wx:key="id" wx:for-item="buttonItem" class="type-list-item" data-type-id="{{ buttonItem.id }}" data-series-id="{{ buttonItem.seriesId }}" data-type-name="{{ buttonItem.name }}">{{ buttonItem.name }}</view>
         </view>
     </view>
 </view>

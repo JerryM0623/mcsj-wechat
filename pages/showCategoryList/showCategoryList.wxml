@@ -1,0 +1,19 @@
+<view class="container show-category-list-container">
+    <view class="result-list">
+        <view class="result-list-item">
+            <view class="result-img">
+                <image src="/static/images/develop_test/test3.jpg"></image>
+            </view>
+            <view class="result-info">
+                <view class="result-name">不二家棒棒糖</view>
+                <view class="result-price">
+                    <view class="result-sale-price">￥999.00</view>
+                    <view class="result-origin-price">￥1999.00</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="result-list">
+        <view class="tip">暂无数据</view>
+    </view>
+</view>

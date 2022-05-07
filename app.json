@@ -8,7 +8,8 @@
     "pages/locations/locations",
     "pages/showLocationInfo/showLocationInfo",
     "pages/search/search",
-    "pages/showProductInfo/showProductInfo"
+    "pages/showProductInfo/showProductInfo",
+    "pages/showCategoryList/showCategoryList"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

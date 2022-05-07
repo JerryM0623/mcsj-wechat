@@ -158,5 +158,14 @@ Page({
         this.setData({
             seriesAndTypesList: seriesAndTypesArr
         })
+    },
+    /**
+     * 前往类别商品列表页
+     */
+    gotoShowCategoryList(event){
+        const {seriesId, typeId, typeName} = event.currentTarget.dataset;
+        wx.navigateTo({
+            url: `/pages/showCategoryList/showCategoryList?seriesId=${ seriesId }&typeId=${ typeId }&typeName=${ typeName }`
+        })
     }
 })
