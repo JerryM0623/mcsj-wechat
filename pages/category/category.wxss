@@ -15,10 +15,11 @@ page{
 .title{
     font-weight: 700;
     letter-spacing: 4rpx;
-    font-size: 40rpx;
-    border-left: 10rpx solid black;
+    font-size: 34rpx;
+    border-left: 6rpx solid #cb141d;
     padding-left: 10rpx;
     margin-bottom: 20rpx;
+    color: #cb141d;
 }
 .type-list{
     width: 100%;
