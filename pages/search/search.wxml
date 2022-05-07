@@ -1,2 +1,6 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class="container search-container">
+    <view class="search-box">
+        <input placeholder="请输入搜索关键词" type="text" class="search-input"></input>
+        <text class="search-btn">搜索</text>
+    </view>
+</view>
