@@ -2,7 +2,7 @@
     <view wx:for="{{ seriesAndTypesList }}" wx:for-item="groupItem" class="group">
         <view class="title">{{ groupItem[0] }}</view>
         <view class="type-list">
-            <view wx:for="{{ groupItem[1] }}" wx:for-item="buttonItem" class="type-list-item" data-type-id="{{ buttonItem.id }}" data-series-id="{{ buttonItem.seriesId }}">{{ buttonItem.name }}</view>
+            <view wx:for="{{ groupItem[1] }}" wx:for-item="buttonItem" class="type-list-item" data-type-id="{{ buttonItem.id }}" data-series-id="{{ buttonItem.seriesId }}" data-type-name="{{ buttonItem.name }}">{{ buttonItem.name }}</view>
         </view>
     </view>
 </view>
