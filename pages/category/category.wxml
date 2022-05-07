@@ -1,10 +1,8 @@
 <view class="container category-container">
-    <view class="group">
-        <view class="title">们系列</view>
+    <view wx:for="{{ seriesAndTypesList }}" wx:for-item="groupItem" class="group">
+        <view class="title">{{ groupItem[0] }}</view>
         <view class="type-list">
-            <view class="type-list-item">断桥</view>
-            <view class="type-list-item">非断桥</view>
-            <view class="type-list-item">断了一半的桥</view>
+            <view wx:for="{{ groupItem[1] }}" wx:for-item="buttonItem" class="type-list-item" data-type-id="{{ buttonItem.id }}">{{ buttonItem.name }}</view>
         </view>
     </view>
 </view>
