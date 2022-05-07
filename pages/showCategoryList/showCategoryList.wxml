@@ -1,19 +1,19 @@
 <view class="container show-category-list-container">
-    <view class="result-list">
-        <view class="result-list-item">
+    <view wx:if="{{ productList.length > 0 }}" class="result-list">
+        <view wx:for="{{ productList }}" wx:key="uuid" class="result-list-item" data-uuid="{{ item.uuid }}" bind:tap="gotoProductInfo">
             <view class="result-img">
-                <image src="/static/images/develop_test/test3.jpg"></image>
+                <image src="{{ item.imgUrl }}"></image>
             </view>
             <view class="result-info">
-                <view class="result-name">不二家棒棒糖</view>
+                <view class="result-name">{{ item.name }}</view>
                 <view class="result-price">
-                    <view class="result-sale-price">￥999.00</view>
-                    <view class="result-origin-price">￥1999.00</view>
+                    <view class="result-sale-price">￥{{ item.salePrice }}</view>
+                    <view class="result-origin-price">￥{{ item.originPrice }}</view>
                 </view>
             </view>
         </view>
     </view>
-    <view class="result-list">
+    <view wx:else class="result-list">
         <view class="tip">暂无数据</view>
     </view>
 </view>

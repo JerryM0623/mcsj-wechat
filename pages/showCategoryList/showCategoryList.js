@@ -1,10 +1,15 @@
 // pages/showCategoryList/showCategoryList.js
+const categoryApis = require('../../apis/category.api');
+const showToastUtil = require('../../utils/showToast');
+
 Page({
 
     /**
      * 页面的初始数据
      */
-    data: {},
+    data: {
+        productList: []
+    },
 
     /**
      * 生命周期函数--监听页面加载
@@ -13,7 +18,8 @@ Page({
         const { seriesId, typeId, typeName } = options;
         wx.setNavigationBarTitle({
             title: `${ typeName }类商品列表`
-        })
+        });
+        this.getSeriesTypeProductInfo(seriesId, typeId);
     },
 
     /**
@@ -63,5 +69,47 @@ Page({
      */
     onShareAppMessage() {
 
+    },
+    /**
+     * 获得当前系列id和类别id下已上架的所有商品信息
+     */
+    getSeriesTypeProductInfo(seriesId, typeId){
+        const self = this;
+
+        if (seriesId === undefined || seriesId === null || seriesId === '' || typeId === undefined || typeId === null || typeId === ''){
+            showToastUtil.showToastNoIcon('系统错误，请刷新重试');
+            return;
+        }
+        wx.request({
+            url: categoryApis.getSeriesTypeProductInfo,
+            data: {seriesId, typeId},
+            method: 'GET',
+            success: (res) => {
+                const data = res.data;
+                if (data.code !== 10036){
+                    showToastUtil.showToastNoIcon(data.msg);
+                }else{
+                    if(data.data.length === 0){
+                        showToastUtil.showToastNoIcon('暂无商品数据');
+                    }else{
+                        self.setData({
+                            productList: data.data
+                        })
+                    }
+                }
+            },
+            fail: () => {
+                showToastUtil.showToastNoIcon('系统错误，请重试');
+            }
+        })
+    },
+    /**
+     * 前往商品详情页面
+     */
+    gotoProductInfo(event){
+        const { uuid } = event.currentTarget.dataset;
+        wx.navigateTo({
+            url: '/pages/showProductInfo/showProductInfo?uuid='+uuid
+        })
     }
 })
