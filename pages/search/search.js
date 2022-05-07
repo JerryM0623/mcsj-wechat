@@ -70,7 +70,6 @@ Page({
      * 点击搜索
      */
     search(){
-        showToastUtil.showToastLoading();
         const keyWord = this.data.keyWord;
         if (keyWord.trim().length <= 0){
             return;
@@ -83,11 +82,15 @@ Page({
             success: (res) => {
                 const data = res.data;
                 if (data.code !== 10026){
-                    showToastUtil.showToastNoIcon(data.msg);
+                    showToastUtil.showToastSuccess(data.msg);
                 }else{
-                    this.setData({
-                        resultList: data.data
-                    })
+                    if (data.data.length === 0){
+                        showToastUtil.showToastNoIcon('未查询到数据');
+                    }else{
+                        this.setData({
+                            resultList: data.data
+                        })
+                    }
                 }
             },
             fail: () => {

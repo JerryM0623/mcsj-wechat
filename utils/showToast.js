@@ -22,7 +22,7 @@ const showToastLoading = function(title){
 const showToastNoIcon = function (title){
     wx.showToast({
         title,
-        icon: none
+        icon: 'none'
     })
 }
 

@@ -83,3 +83,9 @@
     font-size: 26rpx;
     text-decoration-line: line-through;
 }
+.tip{
+    font-weight: 700;
+    font-size: 40rpx;
+    text-align: center;
+    color: rgba(0,0,0,0.5);
+}

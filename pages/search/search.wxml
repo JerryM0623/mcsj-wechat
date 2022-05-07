@@ -3,7 +3,7 @@
         <input placeholder="请输入搜索关键词" model:value="{{ keyWord }}" type="text" class="search-input"></input>
         <text class="search-btn" bind:tap="search">搜索</text>
     </view>
-    <view class="result-list">
+    <view wx:if="{{ resultList.length > 0 }}" class="result-list">
         <view wx:for="{{resultList}}" wx:key="uuid" class="result-list-item">
             <view class="result-img">
                 <image src="{{ item.img_url }}"></image>
@@ -16,5 +16,8 @@
                 </view>
             </view>
         </view>
+    </view>
+    <view wx:else class="result-list">
+        <view class="tip">暂无数据</view>
     </view>
 </view>
