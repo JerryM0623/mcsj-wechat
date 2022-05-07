@@ -1,2 +1,10 @@
-<!--pages/category/category.wxml-->
-<text>pages/category/category.wxml</text>
+<view class="container category-container">
+    <view class="group">
+        <view class="title">们系列</view>
+        <view class="type-list">
+            <view class="type-list-item">断桥</view>
+            <view class="type-list-item">非断桥</view>
+            <view class="type-list-item">断了一半的桥</view>
+        </view>
+    </view>
+</view>

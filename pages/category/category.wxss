@@ -1,1 +1,39 @@
-/* pages/category/category.wxss */
+page{
+    background-color: #eee;
+}
+
+.category-container{
+    width: 100%;
+    padding-top: 20rpx;
+    padding-bottom: 130rpx;
+}
+.group{
+    width: calc(100% - 40rpx);
+    padding: 0 20rpx;
+    margin-bottom: 20rpx;
+}
+.title{
+    font-weight: 700;
+    letter-spacing: 4rpx;
+    font-size: 40rpx;
+    border-left: 10rpx solid black;
+    padding-left: 10rpx;
+    margin-bottom: 20rpx;
+}
+.type-list{
+    width: 100%;
+    /*background-color: pink;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.type-list-item{
+    width: calc(50% - 40rpx);
+    height: 100rpx;
+    background-color: white;
+    margin: 20rpx;
+    border-radius: 10rpx;
+    text-align: center;
+    line-height: 100rpx;
+}
