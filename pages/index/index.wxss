@@ -80,6 +80,7 @@
     font-weight: 700;
     color: #cb141d;
     padding-bottom: 10rpx;
+    text-align: center;
 }
 .recommend-box .recommend-list{
     margin-top: 20rpx;

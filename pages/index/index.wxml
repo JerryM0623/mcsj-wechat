@@ -13,20 +13,20 @@
     </view>
 
     <!-- 分类小圆标 -->
-    <view class="types-box">
-        <view class="door type-item">
-            <image class="type-image" src="/static/images/index/door.png"></image>
-            <text class="type-name">门系列</text>
-        </view>
-        <view class="window type-item">
-            <image class="type-image" src="/static/images/index/window.png"></image>
-            <text class="type-name">窗系列</text>
-        </view>
-        <view class="house type-item">
-            <image class="type-image" src="/static/images/index/house.png"></image>
-            <text class="type-name">房系列</text>
-        </view>
-    </view>
+<!--    <view class="types-box">-->
+<!--        <view class="door type-item">-->
+<!--            <image class="type-image" src="/static/images/index/door.png"></image>-->
+<!--            <text class="type-name">门系列</text>-->
+<!--        </view>-->
+<!--        <view class="window type-item">-->
+<!--            <image class="type-image" src="/static/images/index/window.png"></image>-->
+<!--            <text class="type-name">窗系列</text>-->
+<!--        </view>-->
+<!--        <view class="house type-item">-->
+<!--            <image class="type-image" src="/static/images/index/house.png"></image>-->
+<!--            <text class="type-name">房系列</text>-->
+<!--        </view>-->
+<!--    </view>-->
 
     <!-- 精彩推荐 -->
     <view class="recommend-box">
