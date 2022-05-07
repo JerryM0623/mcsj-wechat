@@ -19,8 +19,16 @@ const showToastLoading = function(title){
     })
 }
 
+const showToastNoIcon = function (title){
+    wx.showToast({
+        title,
+        icon: none
+    })
+}
+
 module.exports = {
     showToastSuccess,
     showToastLoading,
-    showToastFail
+    showToastFail,
+    showToastNoIcon
 }
