@@ -97,5 +97,14 @@ Page({
                 showToastUtil.showToastNoIcon('查询失败,请重试');
             }
         })
+    },
+    /**
+     * 前往商品详情页面
+     */
+    gotoProductInfo(event){
+        const uuid = event.currentTarget.dataset.uuid;
+        wx.navigateTo({
+            url: '/pages/showProductInfo/showProductInfo?uuid='+uuid
+        })
     }
 })

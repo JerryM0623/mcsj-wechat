@@ -4,7 +4,7 @@
         <text class="search-btn" bind:tap="search">搜索</text>
     </view>
     <view wx:if="{{ resultList.length > 0 }}" class="result-list">
-        <view wx:for="{{resultList}}" wx:key="uuid" class="result-list-item">
+        <view wx:for="{{resultList}}" wx:key="uuid" data-uuid="{{ item.uuid }}" bind:tap="gotoProductInfo" class="result-list-item">
             <view class="result-img">
                 <image src="{{ item.img_url }}"></image>
             </view>
