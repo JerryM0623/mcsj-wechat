@@ -3,4 +3,18 @@
         <input placeholder="请输入搜索关键词" type="text" class="search-input"></input>
         <text class="search-btn">搜索</text>
     </view>
+    <view class="result-list">
+        <view class="result-list-item">
+            <view class="result-img">
+                <image src="/static/images/develop_test/test3.jpg"></image>
+            </view>
+            <view class="result-info">
+                <view class="result-name">不二家棒棒糖</view>
+                <view class="result-price">
+                    <view class="result-sale-price">￥999.00</view>
+                    <view class="result-origin-price">￥1999.00</view>
+                </view>
+            </view>
+        </view>
+    </view>
 </view>
