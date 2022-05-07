@@ -52,6 +52,8 @@
     font-size: 32rpx;
     margin-bottom: 10rpx;
 }
-.content{
-    letter-spacing: 3rpx;
+.content view{
+    /*letter-spacing: 3rpx;*/
+    padding: 10rpx 0;
+    font-size: 28rpx;
 }
