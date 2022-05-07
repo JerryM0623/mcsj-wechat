@@ -124,5 +124,14 @@ Page({
               console.log('error');
           }
         })
-    }
+    },
+
+    /**
+     * 前往搜索页面
+     */
+    gotoSearch(){
+        wx.navigateTo({
+            url: '/pages/search/search',
+        })
+    },
 })

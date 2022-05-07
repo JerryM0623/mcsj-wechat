@@ -1,7 +1,7 @@
 <!--pages/index/index.wxml-->
 <view class="index-container container">
     <!-- 搜索框 -->
-    <view class="search-box">搜索</view>
+    <view class="search-box" bind:tap="gotoSearch">搜索</view>
 
     <!-- 轮播图 -->
     <view class="carousel-box">
