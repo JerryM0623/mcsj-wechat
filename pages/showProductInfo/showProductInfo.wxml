@@ -1,3 +1,37 @@
 <view class="container show-product-info-container">
-    111
+    <!--    预览图-->
+    <view class="review-image">
+        <image src="/static/images/develop_test/test3.jpg"></image>
+    </view>
+    <!--    名称与价格-->
+    <view class="product-name-price card">
+        <view class="product-price">
+            <text class="sale-price">￥999.00</text>
+            <text class="origin-price">￥1999.00</text>
+        </view>
+        <view class="product-name">不二家棒棒糖</view>
+    </view>
+    <!--    简介*3-->
+    <view class="comment-one card">
+        <view class="title">简介</view>
+        <view class="content">
+            我很好吃我很好吃我很好吃我很好吃我很好吃我很好吃我很好吃我很好吃我很好吃我很好吃我很好吃我很好吃我很好吃我很好吃我很好吃我很好吃
+        </view>
+    </view>
+    <view class="comment-two card">
+        <view class="title">参数</view>
+        <view class="content">
+            我很便宜我很便宜我很便宜我很便宜我很便宜我很便宜我很便宜我很便宜我很便宜我很便宜我很便宜我很便宜我很便宜我很便宜我很便宜我很便宜我很便宜
+        </view>
+    </view>
+    <view class="comment-three card">
+        <view class="title">工艺</view>
+        <view class="content">
+            我风靡全球我风靡全球我风靡全球我风靡全球我风靡全球我风靡全球我风靡全球我风靡全球我风靡全球我风靡全球我风靡全球我风靡全球我风靡全球我风靡全球我风靡全球
+        </view>
+    </view>
+    <!--    下单按钮-->
+    <view class="bottom-control-btn-box">
+        <button class="single-btn">立即购买</button>
+    </view>
 </view>
