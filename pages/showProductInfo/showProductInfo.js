@@ -8,6 +8,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        uuid: '',
         imgUrl: '',
         salePrice: '',
         originPrice: '',
@@ -22,6 +23,9 @@ Page({
      */
     onLoad(options) {
         if (options.uuid !== undefined && options.uuid !== null && options.uuid.trim().length > 0){
+            this.setData({
+                uuid: options.uuid
+            });
             // 获取数据
             this.getProductInfo(options.uuid);
         }
@@ -108,5 +112,24 @@ Page({
                 console.log(error);
             }
         })
+    },
+    /**
+     * 前往下单界面
+     */
+    gotoOrder(){
+        // 验证账号是否登录
+        const userinfo = wx.getStorageSync('userinfo');
+        if (userinfo === null || userinfo === undefined || userinfo === ''){
+            showToastUtil.showToastNoIcon('请登陆账号');
+            setTimeout(() => {
+                wx.navigateTo({
+                    url: '/pages/login/login?type=back'
+                })
+            }, 1000)
+        }else{
+            wx.navigateTo({
+                url: '/pages/buy/buy?uuid='+this.data.uuid
+            })
+        }
     }
 })

@@ -32,6 +32,6 @@
     </view>
     <!--    下单按钮-->
     <view class="bottom-control-btn-box">
-        <button class="single-btn">立即购买</button>
+        <button class="single-btn" bind:tap="gotoOrder">立即购买</button>
     </view>
 </view>

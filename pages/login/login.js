@@ -9,6 +9,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        type: 'login',
         username: '',
         password: ''
     },
@@ -17,7 +18,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        if (options.type === 'back'){
+            this.setData({
+                type: 'navigateBack'
+            });
+        }
     },
 
     /**
@@ -112,7 +117,7 @@ Page({
                 hashPassword: hashPassword
             },
             method: "POST",
-            success(res) {
+            success: (res) => {
                 // 请求返回
                 const {code, msg, data} = res.data;
                 if (code !== 10009) {
@@ -127,16 +132,20 @@ Page({
                 wx.setStorage({
                     key: 'userinfo',
                     data: app.globalData.userinfo,
-                    success() {
+                    success: () => {
                         // 缓存建立成功，跳转用户信息页面，提示用户
                         wx.showToast({
                             title: '登录成功',
                             icon: 'none',
-                            success() {
+                            success: () => {
                                 setTimeout(() => {
-                                    wx.switchTab({
-                                        url: '/pages/profile/profile',
-                                    })
+                                    if (this.data.type === 'navigateBack'){
+                                        wx.navigateBack();
+                                    }else{
+                                        wx.switchTab({
+                                            url: '/pages/profile/profile',
+                                        })
+                                    }
                                 }, 1000)
                             }
                         })

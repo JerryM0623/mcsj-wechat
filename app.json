@@ -9,7 +9,8 @@
     "pages/showLocationInfo/showLocationInfo",
     "pages/search/search",
     "pages/showProductInfo/showProductInfo",
-    "pages/showCategoryList/showCategoryList"
+    "pages/showCategoryList/showCategoryList",
+    "pages/buy/buy"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
