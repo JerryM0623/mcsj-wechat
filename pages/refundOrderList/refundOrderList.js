@@ -1,4 +1,4 @@
-// pages/orderList/rList.js
+// pages/refundOrderList/OrderList.js
 const orderApis = require('../../apis/order.api');
 const showToastUtil = require('../../utils/showToast');
 
@@ -8,21 +8,19 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userId: '',
-        originDataList: [],
-        reverseDataList: []
+        userId: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        if (options.id !== undefined && options.id !== null && options.id !== ''){
+        const userId = options.id;
+        if (userId !== undefined && userId !== null && userId !== ''){
             this.setData({
-                userId: options.id
+                userId
             })
-            // 获取数据
-            this.getOrderList(options.id);
+            this.getRefundOrderList(userId);
         }
     },
 
@@ -75,30 +73,29 @@ Page({
 
     },
     /**
-     * 获取 orderList
+     * 获取申请退款/退款成功/退款失败的订单信息
      * @param userId
      */
-    getOrderList(userId){
-        const self = this;
+    getRefundOrderList(userId){
         wx.request({
-            url: orderApis.getOrderList,
+            url: orderApis.getRefundOrderList,
             data: { userId },
             method: 'GET',
             success: (res) => {
                 const data = res.data;
-                if (data.code !== 10045){
+                if (data.code !== 10060){
                     showToastUtil.showToastNoIcon(data.msg);
-                }else {
+                }else{
                     const originDataList = [...data.data];
                     const reverseDataList = data.data.reverse();
-                    self.setData({
+                    this.setData({
                         originDataList,
                         reverseDataList
                     })
                 }
             },
             fail: () => {
-                showToastUtil.showToastFail('无法获取数据');
+                showToastUtil.showToastFail('获取数据失败');
             }
         })
     },
@@ -112,77 +109,6 @@ Page({
                 url: '/pages/showOrderInfo/showOrderInfo?orderId='+orderId
             })
         }
-    },
-    /**
-     * 将订单转换为已签收状态
-     */
-    changeOrderStatusToReceive(event){
-        const self = this;
-        const { orderId } = event.currentTarget.dataset;
-        if (orderId === undefined || orderId === null || orderId === ''){
-            showToastUtil.showToastFail('参数错误');
-        }else{
-            // 发送请求更新状态
-            wx.request({
-                url: orderApis.changeOrderStatusToReceive,
-                data: { orderId },
-                method: 'POST',
-                success: (res) => {
-                    const data = res.data;
-                    if (data.code !== 10051){
-                        showToastUtil.showToastNoIcon(data.msg)
-                    }else{
-                        showToastUtil.showToastNoIcon(data.msg);
-                        setTimeout(() => {
-                            self.getOrderList(self.data.userId);
-                        }, 1000)
-                    }
-                },
-                fail: () => {
-                    showToastUtil.showToastFail('操作失败');
-                },
-            })
-        }
-    },
-    /**
-     * 将订单转换为申请退款阶段
-     */
-    changeOrderStatusToRequestRefund(event){
-        const self = this;
-        wx.showModal({
-            title: '警告',
-            content: '你确定要申请退款吗?',
-            confirmColor: '#cb141d',
-            success (res) {
-                if (res.confirm) {
-                    const { orderId } = event.currentTarget.dataset;
-                    if (orderId === undefined || orderId === null || orderId === ''){
-                        showToastUtil.showToastFail('参数错误');
-                    }else{
-                        // 发送请求更新状态
-                        wx.request({
-                            url: orderApis.changeOrderStatusToRequestRefund,
-                            data: { orderId },
-                            method: 'POST',
-                            success: (res) => {
-                                const data = res.data;
-                                if (data.code !== 10054){
-                                    showToastUtil.showToastNoIcon(data.msg);
-                                }else{
-                                    showToastUtil.showToastNoIcon(data.msg);
-                                    setTimeout(() => {
-                                        self.getOrderList(self.data.userId);
-                                    }, 1000);
-                                }
-                            },
-                            fail: () => {
-                                showToastUtil.showToastFail('操作失败');
-                            },
-                        })
-                    }
-                }
-            }
-        })
     },
     /**
      * 删除订单记录

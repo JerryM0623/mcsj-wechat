@@ -29,9 +29,9 @@
             <view class="list-name">我的订单</view>
             <view class="iconfont icon-xiayiye"></view>
         </view>
-        <view class="list-item">
+        <view class="list-item" bind:tap="gotoRefundOrderList">
             <view class="iconfont icon-shouhou"></view>
-            <view class="list-name">我的退换货</view>
+            <view class="list-name">我的退款订单</view>
             <view class="iconfont icon-xiayiye"></view>
         </view>
         <view class="list-item" bindtap="gotoLocations">

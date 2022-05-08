@@ -7,7 +7,8 @@ const orderApis = {
     getOrderDetailInfo: BaseUrl + '/order/detail',
     changeOrderStatusToReceive: BaseUrl + '/order/receive',
     changeOrderStatusToRequestRefund: BaseUrl + '/order/refund',
-    deleteOrder: BaseUrl + '/order/delete'
+    deleteOrder: BaseUrl + '/order/delete',
+    getRefundOrderList: BaseUrl + '/order/refund-order-list',
 }
 
 module.exports = orderApis

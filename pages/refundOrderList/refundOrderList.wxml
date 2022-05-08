@@ -1,0 +1,26 @@
+<view class="container order-list-container">
+    <view wx:if="{{ reverseDataList.length > 0 }}">
+        <view wx:for="{{ reverseDataList }}" wx:key="orderId" class="list-item">
+            <view class="top-info" data-order-id="{{ item.orderId }}" bind:tap="gotoOrderInfo">
+                <view class="image-box"><image src="{{ item.productImgUrl }}"></image></view>
+                <view class="info-box">
+                    <view class="name">{{ item.productName }}</view>
+                    <view class="number">x{{ item.buyNumber }}</view>
+                    <view>
+                        <view class="label-price">支付金额:</view>
+                        <view class="price">￥{{ item.buyPrice }}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="bottom-control">
+                <view wx:if="{{ item.status === 5 }}" class="status-tip">申请退款</view>
+                <view wx:if="{{ item.status === 6 }}" class="status-tip">退款成功</view>
+                <view wx:if="{{ item.status === 7 }}" class="status-tip">退款失败</view>
+                <view class="control-btn-box">
+                    <view wx:if="{{ item.status === 4 || item.status === 6 || item.status === 7 }}" bind:tap="deleteOrder" data-order-id="{{ item.orderId }}" class="delete-order-btn">删除</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:else class="tip">暂无数据</view>
+</view>

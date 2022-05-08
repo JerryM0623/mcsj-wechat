@@ -129,5 +129,21 @@ Page({
         wx.navigateTo({
             url: `/pages/orderList/orderList?id=${ app.globalData.userinfo.id }`,
         })
+    },
+    /**
+     * 前往退款订单页面
+     */
+    gotoRefundOrderList(){
+        // 判断
+        if(this.data.userinfo.username === ''){
+            wx.showToast({
+                title: '请先登录',
+                icon: 'none'
+            })
+            return;
+        }
+        wx.navigateTo({
+            url: `/pages/refundOrderList/refundOrderList?id=${ app.globalData.userinfo.id }`,
+        })
     }
 })

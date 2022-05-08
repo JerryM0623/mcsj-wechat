@@ -1,0 +1,88 @@
+page{
+    background-color: #eee;
+}
+.order-list-container{
+    width: calc(100% - 40rpx);
+    padding: 20rpx;
+}
+
+.list-item{
+    width: calc(100% - 40rpx);
+    padding: 20rpx;
+    background-color: white;
+    margin-bottom: 20rpx;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top-info{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20rpx;
+}
+.image-box{
+    width: 200rpx;
+    height: 200rpx;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 20rpx;
+    margin-right: 20rpx;
+}
+.image-box image{
+    width: 100%;
+    height: 100%;
+}
+.info-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.info-box .name{
+    font-size: 36rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.info-box .number{
+    font-size: 28rpx;
+    color: #888;
+}
+.info-box .price{
+    color: #cb141d;
+    font-size: 34rpx;
+    font-weight: 700;
+}
+
+.bottom-control{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.bottom-control .status-tip{
+    color: #cb141d;
+    font-size: 30rpx;
+    letter-spacing: 3rpx;
+}
+.bottom-control .control-btn-box{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.bottom-control .delete-order-btn{
+    padding: 10rpx 40rpx;
+    border: 2rpx solid #cb141d;
+    text-align: center;
+    color: #cb141d;
+    border-radius: 40rpx;
+    margin-left: 20rpx;
+}
+.tip{
+    font-size: 40rpx;
+    color: #888;
+    font-weight: 700;
+}
