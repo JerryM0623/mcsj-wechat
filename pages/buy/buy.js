@@ -137,5 +137,24 @@ Page({
                 })
             }
         }
+    },
+    /**
+     * 选择/切换收货地址
+     */
+    chooseLocation(){
+        wx.navigateTo({
+            url: '/pages/locations/locations?type=choose&id='+this.data.userId,
+            events: {
+                selectLocationItem: (obj) => {
+                    const { id, name, phone, location } = obj;
+                    this.setData({
+                        location,
+                        locationId: id,
+                        name,
+                        phone
+                    })
+                }
+            }
+        })
     }
 })

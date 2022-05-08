@@ -7,6 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        type: 'check', // 从profile进入的话就是 check 从 buy进入就会被改成 choose
         id: -1, // 存储当前页面展示的用户的id
         locationsList: [],
         editLocationsList: [],
@@ -21,6 +22,11 @@ Page({
         })
         // 获取数据
         this.getLocations();
+        if (options.type === 'choose'){
+            this.setData({
+                type: options.type
+            })
+        }
     },
 
     /**
@@ -166,5 +172,16 @@ Page({
                 }
             }
         })
+    },
+    /**
+     * 选中地址
+     */
+    selectLocationItem(event){
+        if (this.data.type !== 'choose'){
+            return;
+        }
+        const eventChannel = this.getOpenerEventChannel();
+        eventChannel.emit('selectLocationItem', event.currentTarget.dataset)
+        wx.navigateBack();
     }
 })

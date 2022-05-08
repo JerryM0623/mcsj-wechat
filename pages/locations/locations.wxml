@@ -1,6 +1,14 @@
 <view class="locations-container container">
   <view wx:if="locatinsList.length > 0" class="list">
-    <view wx:for="{{editLocationsList}}" wx:key="id" class="item-box">
+    <view wx:for="{{editLocationsList}}"
+          wx:key="id"
+          bind:tap="selectLocationItem"
+          class="item-box"
+          data-name="{{  item.name }}"
+          data-phone="{{ item.phone }}"
+          data-location="{{ item.location }}"
+          data-id="{{ item.id }}"
+    >
       <view class="user-info">
         <text>{{ item.name }}</text>
         <text>{{ item.phone }}</text>
@@ -14,6 +22,7 @@
       </view>
     </view>
   </view>
+  <view wx:else class="no-data-tip">暂无数据</view>
   <view class="bottom-control-btn-box">
     <button bindtap="addLocation" class="single-btn">添加地址</button>
   </view>
