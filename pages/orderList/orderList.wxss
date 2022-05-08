@@ -81,3 +81,8 @@ page{
     border-radius: 40rpx;
     margin-left: 20rpx;
 }
+.tip{
+    font-size: 40rpx;
+    color: #888;
+    font-weight: 700;
+}
