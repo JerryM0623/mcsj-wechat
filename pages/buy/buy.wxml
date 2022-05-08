@@ -1,2 +1,34 @@
-<!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<view class="container buy-container">
+<!--    地址选择区域-->
+    <view class="location-choose no-location">
+        <text>点击选择收货地址</text>
+    </view>
+    <view class="location-choose have-location">
+        <view class="location-box">
+            <text>湖南省常德市武陵区白马湖街道湖南文理学院</text>
+        </view>
+        <view class="name-box">马佳伟</view>
+        <view class="person-box">166****6061</view>
+        <view class="tip">点击切换收货地址</view>
+    </view>
+<!--    商品信息区域-->
+    <view class="product-box">
+        <view class="left-image">
+            <image src="/static/images/develop_test/test3.jpg"></image>
+        </view>
+        <view class="info-box">
+            <view class="middle-name">不二家棒棒糖</view>
+            <view class="right-price">单价:￥999.00</view>
+        </view>
+    </view>
+<!--    数量输入区域-->
+    <view class="number-input">
+        <view class="label-title">购买数量:</view>
+        <input type="number" placeholder="请输入购买数量"></input>
+    </view>
+<!--    价格计算及下单按钮区域-->
+    <view class="bottom-control-btn-box">
+        <view class="total-price"><text>共计</text><text class="price">￥999.00</text></view>
+        <view class="buy-btn">去付款</view>
+    </view>
+</view>
