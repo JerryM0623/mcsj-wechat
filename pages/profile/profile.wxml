@@ -24,7 +24,7 @@
     </view>
     <!-- 菜单列表区域 -->
     <view class="menu-list">
-        <view class="list-item">
+        <view class="list-item" bind:tap="gotoOrderList">
             <view class="iconfont icon-wenjian"></view>
             <view class="list-name">我的订单</view>
             <view class="iconfont icon-xiayiye"></view>
@@ -37,11 +37,6 @@
         <view class="list-item" bindtap="gotoLocations">
             <view class="iconfont icon-dingwei"></view>
             <view class="list-name">我的地址</view>
-            <view class="iconfont icon-xiayiye"></view>
-        </view>
-        <view class="list-item">
-            <view class="iconfont icon-kefu"></view>
-            <view class="list-name">联系客服</view>
             <view class="iconfont icon-xiayiye"></view>
         </view>
         <view class="list-item">

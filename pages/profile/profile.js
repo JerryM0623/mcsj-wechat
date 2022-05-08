@@ -113,5 +113,21 @@ Page({
       wx.navigateTo({
         url: `/pages/locations/locations?id=${ app.globalData.userinfo.id }`,
       })
+    },
+    /**
+     * 前往订单列表页面
+     */
+    gotoOrderList(){
+        // 判断
+        if(this.data.userinfo.username === ''){
+            wx.showToast({
+                title: '请先登录',
+                icon: 'none'
+            })
+            return;
+        }
+        wx.navigateTo({
+            url: `/pages/orderList/orderList?id=${ app.globalData.userinfo.id }`,
+        })
     }
 })
