@@ -29,6 +29,6 @@
 <!--    价格计算及下单按钮区域-->
     <view class="bottom-control-btn-box">
         <view class="total-price"><text>共计</text><text class="price">￥{{ totalPrice }}</text></view>
-        <view class="buy-btn">去付款</view>
+        <view bind:tap="gotoPay" class="buy-btn">去付款</view>
     </view>
 </view>

@@ -1,6 +1,7 @@
 // pages/order/order.js
 const showToastUril = require('../..//utils/showToast');
 const productApis = require('../..//apis/product.api');
+const orderApis = require('../../apis/order.api');
 
 Page({
 
@@ -21,7 +22,9 @@ Page({
         productNumber: '1',
 
         totalPrice: '',
-        userId: '-1',
+        userId: '',
+
+        orderId: '',
     },
 
     /**
@@ -155,6 +158,90 @@ Page({
                         phone
                     })
                 }
+            }
+        })
+    },
+    /**
+     * 去付款按钮
+     */
+    gotoPay(){
+        const self = this;
+        // 验证收货地址
+        if (this.data.locationId === '' || this.data.location === '' ||
+            this.data.name === '' || this.data.phone === ''){
+            showToastUril.showToastFail('请选择收货地址');
+            return;
+        }
+        // 验证商品信息
+        // 验证价格信息等
+        if (this.data.productId === '' || this.data.productUuid === '' || this.data.productName === '' ||
+            this.data.productPrice === '' || this.data.productImgUrl === '' || this.data.productNumber === '' ||
+            this.totalPrice === '' || this.data.userId === ''){
+            showToastUril.showToastFail('参数错误');
+            return;
+        }
+        // 创建订单
+        wx.request({
+            url: orderApis.createOrder,
+            data: {
+                userId: this.data.userId,
+                locationId: this.data.locationId,
+                productId: this.data.productId,
+                buyNumber: this.data.productNumber,
+                buyPrice: this.data.totalPrice
+            },
+            method: 'POST',
+            success: (res) => {
+                const data = res.data;
+                if (data.code !== 10039){
+                    showToastUril.showToastNoIcon(data.msg);
+                }else{
+                    self.setData({
+                        orderId: data.data
+                    })
+                    // 开启付款按钮
+                    wx.showModal({
+                        title: '提示',
+                        content: '订单已创建成功,是否立刻支付'+self.data.totalPrice+'元',
+                        confirmText: '立刻支付',
+                        confirmColor: '#ff0000',
+                        cancelText: '稍后支付',
+                        success: (res) => {
+                            if (res.confirm) {
+                                // 模拟支付完成,修改订单状态为已付款
+                                self.changeOrderStatusToPaid();
+                            }
+                        }
+                    })
+                }
+            },
+            fail: () => {
+                showToastUril.showToastNoIcon('系统错误,请稍后再试!');
+            }
+        })
+    },
+    /**
+     * 修改订单状态为已支付
+     */
+    changeOrderStatusToPaid(){
+        wx.request({
+            url: orderApis.changeOrderStatusToPaid,
+            data: { orderId: this.data.orderId },
+            method: 'post',
+            success: (res) => {
+                const data = res.data;
+                if (data.code !== 10042){
+                    showToastUril.showToastNoIcon(data.msg);
+                    return;
+                }else{
+                    showToastUril.showToastSuccess('支付成功');
+                    setTimeout(() => {
+                        wx.navigateBack();
+                    }, 1000)
+                }
+            },
+            fail: () => {
+                showToastUril.showToastFail('支付失败');
             }
         })
     }
