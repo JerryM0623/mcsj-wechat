@@ -6,6 +6,10 @@ page{
     padding: 20rpx;
 }
 
+.order-list-container > view{
+    width: 100%;
+}
+
 .list-item{
     width: calc(100% - 40rpx);
     padding: 20rpx;

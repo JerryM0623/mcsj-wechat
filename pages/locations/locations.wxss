@@ -31,11 +31,10 @@
 }
 
 .item-box .location-control {
-    padding-top: 10rpx;
-    font-size: 20rpx;
+    font-size: 24rpx;
     color: #6d6d6d;
     position: relative;
-    height: 30rpx;
+    height: 50rpx;
 }
 
 .item-box .location-control text:nth-child(2) {
@@ -47,7 +46,7 @@
 .item-box .location-control text:nth-child(1) {
     position: absolute;
     top: 10px;
-    right: 80rpx;
+    right: 100rpx;
 }
 
 
