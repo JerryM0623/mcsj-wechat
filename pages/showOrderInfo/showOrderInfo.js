@@ -1,4 +1,4 @@
-// pages/orderList/rList.js
+// pages/showOrderInfo/showOrderInfo.js
 const orderApis = require('../../apis/order.api');
 const showToastUtil = require('../../utils/showToast');
 
@@ -8,21 +8,23 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userId: '',
-        originDataList: [],
-        reverseDataList: []
+        productImgUrl: '',
+        productName: '',
+        buyNumber: '',
+        buyPrice: '',
+        locationName: '',
+        locationPhone: '',
+        location: '',
+        status: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        if (options.id !== undefined && options.id !== null && options.id !== ''){
-            this.setData({
-                userId: options.id
-            })
-            // 获取数据
-            this.getOrderList(options.id);
+        const { orderId } = options;
+        if (orderId !== undefined && orderId !== null && orderId !== ''){
+            this.getOrderDetailInfo(orderId);
         }
     },
 
@@ -75,42 +77,35 @@ Page({
 
     },
     /**
-     * 获取 orderList
-     * @param userId
+     * 获取详细的订单详情
+     * @param orderId
      */
-    getOrderList(userId){
+    getOrderDetailInfo(orderId){
         const self = this;
         wx.request({
-            url: orderApis.getOrderList,
-            data: { userId },
+            url: orderApis.getOrderDetailInfo,
+            data: { orderId },
             method: 'GET',
             success: (res) => {
                 const data = res.data;
-                if (data.code !== 10045){
+                if (data.code !== 10048){
                     showToastUtil.showToastNoIcon(data.msg);
-                }else {
-                    const originDataList = [...data.data];
-                    const reverseDataList = data.data.reverse();
+                }else{
                     self.setData({
-                        originDataList,
-                        reverseDataList
+                        productImgUrl: data.data.productImgUrl,
+                        productName: data.data.productName,
+                        buyNumber: data.data.buyNumber,
+                        buyPrice: data.data.buyPrice,
+                        locationName: data.data.locationName,
+                        locationPhone: data.data.locationPhone,
+                        location: data.data.location,
+                        status: data.data.status
                     })
                 }
             },
             fail: () => {
-                showToastUtil.showToastFail('无法获取数据');
+                showToastUtil.showToastFail('数据获取失败')
             }
         })
-    },
-    /**
-     * 前往订单详细页面
-     */
-    gotoOrderInfo(event){
-        const { orderId } = event.currentTarget.dataset;
-        if (orderId !== undefined && orderId !== null && orderId !== ''){
-            wx.navigateTo({
-                url: '/pages/showOrderInfo/showOrderInfo?orderId='+orderId
-            })
-        }
     }
 })

@@ -1,0 +1,43 @@
+<view class="container show-order-info-container">
+    <view class="card">
+        <view class="top">
+            <view class="image-box"><image src="{{ productImgUrl }}"></image></view>
+            <view class="line">
+                <view class="label">商品名称</view>
+                <view class="content product-name">{{ productName }}</view>
+            </view>
+            <view class="line">
+                <view class="label">购买数量</view>
+                <view class="content product-name">x{{ buyNumber }}</view>
+            </view>
+            <view class="line">
+                <view class="label">支付金额</view>
+                <view class="content">￥{{ buyPrice }}</view>
+            </view>
+            <view class="line">
+                <view class="label">订单状态</view>
+                <view wx:if="{{ status === 1 }}" class="content">未付款</view>
+                <view wx:if="{{ status === 2 }}" class="content">已付款</view>
+                <view wx:if="{{ status === 3 }}" class="content">已发货</view>
+                <view wx:if="{{ status === 4 }}" class="content">已签收</view>
+                <view wx:if="{{ status === 5 }}" class="content">申请退款</view>
+                <view wx:if="{{ status === 6 }}" class="content">退款成功</view>
+                <view wx:if="{{ status === 7 }}" class="content">退款失败</view>
+            </view>
+        </view>
+        <view class="bottom">
+            <view class="line">
+                <view class="label">收件人姓名</view>
+                <view class="content">{{ locationName }}</view>
+            </view>
+            <view class="line">
+                <view class="label">收件人手机</view>
+                <view class="content">{{ locationPhone }}</view>
+            </view>
+            <view class="line">
+                <view class="label">收件地址</view>
+                <view class="content">{{ location }}</view>
+            </view>
+        </view>
+    </view>
+</view>

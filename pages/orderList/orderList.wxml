@@ -1,6 +1,6 @@
 <view class="container order-list-container">
     <view wx:if="{{ reverseDataList.length > 0 }}">
-        <view wx:for="{{ reverseDataList }}" wx:key="id" data-order-id="{{ item.id }}" class="list-item">
+        <view wx:for="{{ reverseDataList }}" wx:key="orderId" data-order-id="{{ item.orderId }}" bind:tap="gotoOrderInfo" class="list-item">
             <view class="top-info">
                 <view class="image-box"><image src="{{ item.productImgUrl }}"></image></view>
                 <view class="info-box">

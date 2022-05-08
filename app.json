@@ -11,7 +11,8 @@
     "pages/showProductInfo/showProductInfo",
     "pages/showCategoryList/showCategoryList",
     "pages/buy/buy",
-    "pages/orderList/orderList"
+    "pages/orderList/orderList",
+    "pages/showOrderInfo/showOrderInfo"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
