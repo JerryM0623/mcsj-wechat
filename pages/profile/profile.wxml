@@ -39,10 +39,5 @@
             <view class="list-name">我的地址</view>
             <view class="iconfont icon-xiayiye"></view>
         </view>
-        <view class="list-item">
-            <view class="iconfont icon-jinggao"></view>
-            <view class="list-name">关于商城</view>
-            <view class="iconfont icon-xiayiye"></view>
-        </view>
     </view>
 </view>
