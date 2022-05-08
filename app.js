@@ -8,14 +8,15 @@ App({
         }
     },
     onLaunch(){
-      const userinfo = wx.getStorageSync('userinfo');
-      if(userinfo !== null ||userinfo !== undefined || userinfo !== ''){
-          this.globalData.userinfo = {
-            id: userinfo.id,
-            username: userinfo.username,
-            uuid: userinfo.uuid,
-            token: userinfo.token
-          }
-      }
-    }
+        wx.removeStorageSync('userinfo');
+        // const userinfo = wx.getStorageSync('userinfo');
+        // if (userinfo !== null && userinfo !== undefined && userinfo !== '') {
+        //     this.globalData.userinfo = {
+        //         id: userinfo.id,
+        //         username: userinfo.username,
+        //         uuid: userinfo.uuid,
+        //         token: userinfo.token
+        //     }
+        // }
+    },
 })
