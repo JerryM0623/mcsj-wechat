@@ -232,7 +232,6 @@ Page({
                 const data = res.data;
                 if (data.code !== 10042){
                     showToastUril.showToastNoIcon(data.msg);
-                    return;
                 }else{
                     showToastUril.showToastSuccess('支付成功');
                     setTimeout(() => {

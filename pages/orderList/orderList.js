@@ -223,5 +223,53 @@ Page({
                 }
             }
         })
+    },
+    /**
+     * 将订单修改成已付款状态
+     */
+    changeOrderStatusToPaid(event){
+        const self = this;
+        const { orderId } = event.currentTarget.dataset;
+        if (orderId === undefined || orderId === null || orderId === ''){
+            showToastUtil.showToastFail('参数错误');
+        }else{
+            let price = 0;
+            self.data.originDataList.forEach(item => {
+                if (item.orderId === orderId){
+                    price = item.buyPrice;
+                }
+            })
+            wx.showModal({
+                title: '提示',
+                content: '是否需要支付'+price+'元',
+                confirmText: '立刻支付',
+                confirmColor: '#ff0000',
+                cancelText: '稍后支付',
+                success: (res) => {
+                    if (res.confirm) {
+                        // 模拟支付完成,修改订单状态为已付款
+                        wx.request({
+                            url: orderApis.changeOrderStatusToPaid,
+                            data: { orderId },
+                            method: 'post',
+                            success: (res) => {
+                                const data = res.data;
+                                if (data.code !== 10042){
+                                    showToastUtil.showToastNoIcon(data.msg);
+                                }else{
+                                    showToastUtil.showToastSuccess('支付成功');
+                                    setTimeout(() => {
+                                        self.getOrderList(self.data.userId);
+                                    }, 1000)
+                                }
+                            },
+                            fail: () => {
+                                showToastUtil.showToastFail('支付失败');
+                            }
+                        })
+                    }
+                }
+            })
+        }
     }
 })
