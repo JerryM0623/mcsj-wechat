@@ -125,7 +125,8 @@ Page({
         if (this.data.productNumber !== ''){
             if(Number(this.data.productNumber) < 1){
                 this.setData({
-                    productNumber: 1
+                    productNumber: 1,
+                    totalPrice: this.data.productPrice
                 });
                 showToastUril.showToastNoIcon('请输入大于等于1的数字');
             }else{
