@@ -185,7 +185,9 @@ Page({
             url: orderApis.createOrder,
             data: {
                 userId: this.data.userId,
-                locationId: this.data.locationId,
+                locationName: this.data.name,
+                locationPhone: this.data.phone,
+                location: this.data.location,
                 productId: this.data.productId,
                 buyNumber: this.data.productNumber,
                 buyPrice: this.data.totalPrice
